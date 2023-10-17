@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Fornecedores e Produtos</title>
+    <link rel="stylesheet" href="https://fluig.totvs.com/style-guide/css/fluig-style-guide.min.css">
+    <script src="https://fluig.totvs.com/portal/resources/js/jquery/jquery.js"></script>
+    <script src="https://fluig.totvs.com/portal/resources/js/jquery/jquery-ui.min.js"></script>
+    <script src="https://fluig.totvs.com/portal/resources/js/mustache/mustache-min.js"></script>
+    <script src="https://fluig.totvs.com/style-guide/js/fluig-style-guide.min.js"></script>
+</head>
+<body>
+    <div class="fluig-style-guide container">
+        <h1 class="text-center" style="font-size: 40px; font-weight: bold;">Cadastro Fornecedor/Produto</h1>
+        <br>
+        <form id="cadastroForm">
+            <div class="panel panel-info">
+                <div class="panel-heading" style="font-size: 20px; font-weight: bold;">Dados do Fornecedor</div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <br>
+                        <div class="form-group col-md-7">
+                            <label for="razaoSocial" class="col-form-label">Razão Social:</label>
+                            <input type="text" class="form-control" id="razaoSocial" required>
+                        </div>
+                        <div class="form-group col-md-5">
+                            <label for="cnpj" class="col-form-label">CNPJ:</label>
+                            <input type="text" class="form-control" id="cnpj" required>
+                        </div>
+                        <div class="form-group col-md-7">
+                            <label for="nomeFantasia" class="col-form-label">Nome Fantasia:</label>
+                            <input type="text" class="form-control" id="nomeFantasia" required>
+                        </div>
+                        <div class="form-group col-md-5">
+                            <label for="insEstadual" class="col-form-label">Inscrição Estadual:</label>
+                            <input type="text" class="form-control" id="insEstadual" required>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="cep" class="col-form-label">CEP:</label>
+                            <input type="text" class="form-control" id="cep" required>
+                        </div>
+                        <div class="form-group col-md-3"></div>
+                        <div class="form-group col-md-5">
+                            <label for="insMunicipal" class="col-form-label">Inscrição Municipal:</label>
+                            <input type="text" class="form-control" id="insMunicipal" required>
+                        </div>
+                        <div class="form-group col-md-7">
+                            <label for="endereco" class="col-form-label">Endereço:</label>
+                            <input type="text" class="form-control" id="endereco" required>
+                        </div>
+                        <div class="form-group col-md-5">
+                            <label for="num" class="col-form-label">Número:</label>
+                            <input type="text" class="form-control" id="num" required>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="complemento" class="col-form-label">Complemento:</label>
+                            <input type="text" class="form-control" id="complemento" required>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="bairro" class="col-form-label">Bairro:</label>
+                            <input type="text" class="form-control" id="bairro" required>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="municipio" class="col-form-label">Município:</label>
+                            <input type="text" class="form-control" id="municipio" required>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="estado" class="col-form-label">Estado:</label>
+                            <input type="text" class="form-control" id="estado" required>
+                        </div>
+                        <div class="form-group col-md-5">
+                            <label for="pessoaContato" class="col-form-label">Nome da Pessoa de Contato:</label>
+                            <input type="text" class="form-control" id="pessoaContato" required>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="tel" class="col-form-label">Telefone:</label>
+                            <input type="text" class="form-control" id="tel" required>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="email" class="col-form-label">E-mail:</label>
+                            <input type="text" class="form-control" id="email" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Outros campos de fornecedor aqui -->
+            <!-- Tabela de Produtos -->
+            <div class="panel panel-info">
+                <div class="panel-heading" style="font-size: 20px; font-weight: bold;">Produtos</div>
+                <div class="panel-body">
+                    <div id="produtosContainer">
+                        <button type="button" class="btn btn-danger col-xs-1" style="float: left; margin-right: 2vh; margin-top: 15vh; align-items: center;">
+                            🗑️
+                        </button>
+                        <div class="produto-container col-xs-10">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h2 class="panel-title">Produto 1</h2>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="form-group col-md-11">
+                                        <label for="descricao1">Produto:</label>
+                                        <input type="text" class="form-control" id="descricao1" name="descricao[]" required>
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="undMedida1">Unidade de Medida:</label>
+                                        <select class="form-control" id="undMedida1" name="undMedida[]">
+                                            <option value="unidade">Unidade</option>
+                                            <option value="kg">Quilograma</option>
+                                            <option value="g">Grama</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="qtdEstoque1">Quantidade em Estoque:</label>
+                                        <input type="number" class="form-control" id="qtdEstoque1" name="qtdEstoque[]" required>
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="valorUnitario1">Valor Unitário:</label>
+                                        <input type="number" class="form-control" id="valorUnitario1" name="valorUnitario[]" required>
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="valorTotal1">Valor Total:</label>
+                                        <input type="number" class="form-control" id="valorTotal1" name="valorTotal[]" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                
+                        <!-- Botão para Adicionar Produto -->
+                        <button type="button" class="btn btn-primary btn-block" id="addProduto" style="margin-top: 3vh; margin-bottom: 3vh;">Adicionar Produto</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Tabela de Anexos -->
+            <div class="panel panel-info">
+                <div class="panel-heading" style="font-size: 20px; font-weight: bold;">Anexos</div>
+                <div class="panel-body">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h2 class="panel-title">Itens</h2>
+                        </div>
+                        <div class="panel-body">
+                            <button type="button" class="btn btn-danger">
+                                🗑️
+                            </button>
+                            <button type="button" class="btn btn-info" style="margin-left: 1vh;">
+                                👁️
+                            </button>
+                            <text style="margin-left: 3vh;">Documento Anexo 1</text>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-primary btn-block" id="addAnexo" style="margin-top: 3vh">Incluir Anexo</button>
+                </div>
+            </div>
+            <button type="button" class="btn btn-success btn-block" id="salvarFornecedor" style="margin-top: 3vh; margin-bottom: 3vh;">Salvar Fornecedor</button>
+        </form>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
