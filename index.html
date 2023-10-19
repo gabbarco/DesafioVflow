@@ -34,16 +34,16 @@
                         </div>
                         <div class="form-group col-md-5">
                             <label for="insEstadual" class="col-form-label">Inscrição Estadual:</label>
-                            <input type="text" class="form-control" id="insEstadual" required>
+                            <input type="text" class="form-control" id="insEstadual">
                         </div>
                         <div class="form-group col-md-4">
                             <label for="cep" class="col-form-label">CEP:</label>
-                            <input type="text" class="form-control" id="cep" required>
+                            <input type="text" class="form-control" id="cep">
                         </div>
                         <div class="form-group col-md-3"></div>
                         <div class="form-group col-md-5">
                             <label for="insMunicipal" class="col-form-label">Inscrição Municipal:</label>
-                            <input type="text" class="form-control" id="insMunicipal" required>
+                            <input type="text" class="form-control" id="insMunicipal">
                         </div>
                         <div class="form-group col-md-7">
                             <label for="endereco" class="col-form-label">Endereço:</label>
@@ -51,15 +51,15 @@
                         </div>
                         <div class="form-group col-md-5">
                             <label for="num" class="col-form-label">Número:</label>
-                            <input type="text" class="form-control" id="num" required>
+                            <input type="text" class="form-control" id="num">
                         </div>
                         <div class="form-group col-md-12">
                             <label for="complemento" class="col-form-label">Complemento:</label>
-                            <input type="text" class="form-control" id="complemento" required>
+                            <input type="text" class="form-control" id="complemento">
                         </div>
                         <div class="form-group col-md-4">
                             <label for="bairro" class="col-form-label">Bairro:</label>
-                            <input type="text" class="form-control" id="bairro" required>
+                            <input type="text" class="form-control" id="bairro">
                         </div>
                         <div class="form-group col-md-4">
                             <label for="municipio" class="col-form-label">Município:</label>
@@ -84,13 +84,12 @@
                     </div>
                 </div>
             </div>
-            <!-- Outros campos de fornecedor aqui -->
             <!-- Tabela de Produtos -->
             <div class="panel panel-info">
                 <div class="panel-heading" style="font-size: 20px; font-weight: bold;">Produtos</div>
                 <div class="panel-body">
                     <div id="produtosContainer">
-                        <button type="button" class="btn btn-danger col-xs-1" style="float: left; margin-right: 2vh; margin-top: 15vh; align-items: center;">
+                        <button type="button" id="botaoRemoverProduto" class="btn btn-danger col-xs-1" style="float: left; margin-right: 2vh; margin-top: 15vh; align-items: center;">
                             🗑️
                         </button>
                         <div class="produto-container col-xs-10">
@@ -105,8 +104,8 @@
                                     </div>
                                     <div class="form-group col-md-3">
                                         <label for="undMedida1">Unidade de Medida:</label>
-                                        <select class="form-control" id="undMedida1" name="undMedida[]">
-                                            <option value="unidade">Unidade</option>
+                                        <select class="form-control" id="undMedida1" name="undMedida[]" required>
+                                            <option disabled selected value="">Unidade</option>
                                             <option value="kg">Quilograma</option>
                                             <option value="g">Grama</option>
                                         </select>
@@ -121,39 +120,48 @@
                                     </div>
                                     <div class="form-group col-md-3">
                                         <label for="valorTotal1">Valor Total:</label>
-                                        <input type="number" class="form-control" id="valorTotal1" name="valorTotal[]" readonly>
+                                        <input type="number" class="form-control" id="valorTotal1" name="valorTotal[]" readonly required>
                                     </div>
                                 </div>
                             </div>
                         </div>                
-                        <!-- Botão para Adicionar Produto -->
-                        <button type="button" class="btn btn-primary btn-block" id="addProduto" style="margin-top: 3vh; margin-bottom: 3vh;">Adicionar Produto</button>
                     </div>
                 </div>
+                <!-- Botão para Adicionar Produto -->
+                <button type="button" class="btn btn-primary btn-block" id="addProduto" style="margin-top: 3vh; margin-bottom: 3vh;">Adicionar Produto</button>
             </div>
             <!-- Tabela de Anexos -->
             <div class="panel panel-info">
                 <div class="panel-heading" style="font-size: 20px; font-weight: bold;">Anexos</div>
                 <div class="panel-body">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h2 class="panel-title">Itens</h2>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h2 class="panel-title">Itens</h2>
+                            </div>
+                            <div id="corpoAnexo" class="panel-body">
+                                <div id="anexosContainer">
+                                    <button type="button" id="botaoRemoverAnexo" class="btn btn-danger">
+                                        🗑️
+                                    </button>
+                                    <button type="button" id="botaoVizualizarAnexo" class="btn btn-info" style="margin-left: 1vh;">
+                                        👁️
+                                    </button>
+                                    <text style="margin-left: 3vh;">Documento Anexo 1</text>
+                                </div>
+                            </div>
                         </div>
-                        <div class="panel-body">
-                            <button type="button" class="btn btn-danger">
-                                🗑️
-                            </button>
-                            <button type="button" class="btn btn-info" style="margin-left: 1vh;">
-                                👁️
-                            </button>
-                            <text style="margin-left: 3vh;">Documento Anexo 1</text>
-                        </div>
-                    </div>
                     <button type="button" class="btn btn-primary btn-block" id="addAnexo" style="margin-top: 3vh">Incluir Anexo</button>
                 </div>
             </div>
-            <button type="button" class="btn btn-success btn-block" id="salvarFornecedor" style="margin-top: 3vh; margin-bottom: 3vh;">Salvar Fornecedor</button>
+            <input type="file" id="fileInput" style="display: none;" accept="image/*">
+            <button type="submit" class="btn btn-success btn-block" id="salvarFornecedor" style="margin-top: 3vh; margin-bottom: 3vh;">Salvar Fornecedor</button>
         </form>
+        <!-- Modal de Loading -->
+        <div id="loadingModal" class="modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); z-index: 9999;">
+            <div class="modal-content" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 20px; border-radius: 5px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); text-align: center;">
+                <p>Enviando...</p>
+            </div>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>

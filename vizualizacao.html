@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Visualização de Imagem</title>
+</head>
+<body>
+    <h1>Visualização de Imagem</h1>
+    <div id="imagemContainer"></div>
+</body>
+</html>
+<script>
+    const imgData = sessionStorage.getItem('imagemBase64');
+    if (imgData) {
+        document.getElementById('imagemContainer').innerHTML = '<img src="' + imgData + '">';
+    }
+</script>x
